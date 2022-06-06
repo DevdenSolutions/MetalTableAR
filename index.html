@@ -55,10 +55,15 @@
 		const a = modelViewer.src;
 		document.querySelector('#model-name').innerText = mName;
 		div.innerHTML = mName + "\n" +a.size;
+
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", a, true);
+		xhr.setRequestHeader('Content-Type', 'application/json');
+		xhr.send(JSON.stringify({
+		value: value
+		}));
 		
-		let material = a.materials[0];
-		console.log(material);
-		console.log(material.name);
+		var response = httpGetAsync(a);
 		document.querySelector('#model-name').innerText = material.name;
 		var response = modelViewer.src;
 				
@@ -68,7 +73,15 @@
 		console.log(b);
 
 	  };
-
+	   function httpGetAsync(url, callback) {
+		var xmlHttp = new XMLHttpRequest();
+		xmlHttp.onreadystatechange = function() { 
+		if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+			callback(xmlHttp.responseText);
+		}
+		xmlHttp.open("GET", url, true); // true for asynchronous 
+		xmlHttp.send(null);
+		}
 	</script>
   </body>
 </html>
