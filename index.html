@@ -35,7 +35,8 @@
     >
 	
 	<button class="Hotspot" id ="anectode" slot="hotspot-7" data-position="0m 0.46m 0m" data-normal="-0m 0m 0m"> <div id="annotation">sample</div></button>
-	
+	<p>Model name</p>
+      <p id="model-name">None</p>
     </model-viewer>
 	<form>
 		Model Name:<br> <input type="text" name="name", id="ModelName">
@@ -52,8 +53,8 @@
 		modelViewer.iosSrc = base + '.usdz';
 		
 		const a = modelViewer.src;
-		
-		div.innerHTML = mName + "\n" +a.size + modelViewerTexture.model.materials[0].name;
+		document.querySelector('#model-name').innerText = mName;
+		div.innerHTML = mName + "\n" +a.size;
 		
 	  };
 
