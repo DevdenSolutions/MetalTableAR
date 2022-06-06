@@ -57,15 +57,16 @@
 		div.innerHTML = mName + "\n" +a.size;
 
 		var xhr = new XMLHttpRequest();
-		xhr.open("POST", a, true);
+		xhr.open("GET", a, true);
 		xhr.setRequestHeader('Content-Type', 'application/json');
+		xhr.send();
 		
 		var client = new HttpClient();
 		client.get(a, function(response) {
 			response.statusCode;
 			const c= response.statusCode;
 		    console.log(c);
-		    const b = response.header.get('Content-Length');
+		    const b = response.get('Content-Length');
 		    console.log(b);
 		});		
 				
