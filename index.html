@@ -56,8 +56,7 @@
 		document.querySelector('#model-name').innerText = mName;
 		div.innerHTML = mName + "\n" +a.size;
 		
-		const modelViewerParameters = document.querySelector("model-viewer#MetalTable");
-		let material = modelViewerParameters.model.materials[0];
+		let material = a.model.materials[0];
 		console.log(material);
 		console.log(material.name);
 		document.querySelector('#model-name').innerText = material.name;
