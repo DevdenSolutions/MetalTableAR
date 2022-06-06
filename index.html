@@ -55,7 +55,7 @@
 		const a = modelViewer.src;
 		document.querySelector('#model-name').innerText = mName;
 		div.innerHTML = mName + "\n" +a.size;
-		response = modelViewer.src;
+		let response = modelViewer.src;
 		const b = response.body.header.get('Content-Length');
 		console.log(b);
 	  };
