@@ -51,7 +51,7 @@
 		modelViewer.src = base + '.glb';
 		modelViewer.iosSrc = base + '.usdz';
 		
-		div.innerHTML = mName + "\n" + modelViewer.src.size;
+		div.innerHTML = mName + "\n" + modelViewerTexture.size + modelViewerTexture.material.name + "\n" + modelViewer.src.model.size;
 		
 	  };
 
