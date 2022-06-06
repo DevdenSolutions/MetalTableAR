@@ -55,12 +55,11 @@
 		const a = modelViewer.src;
 		document.querySelector('#model-name').innerText = mName;
 		div.innerHTML = mName + "\n" +a.size;
-		let response = await fetch(modelViewer.src);
-		const reader = response.body.getReader();
+		var response = modelViewer.src;
 		
 		const c= response.statusCode;
 		console.log(c);
-		const b = response.headers['content-type'];
+		const b = response.header.get('Content-Length');
 		console.log(b);
 
 	  };
