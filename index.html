@@ -68,8 +68,8 @@
 		var client = new HttpClient();
 		client.get(a, function(response) {
 			console.log(response);
-			response.statusCode;
-			const c= response.statusCode;
+			response.status;
+			const c= response.status;
 		    console.log(c);
 		    const b = response.header.get('content-length');
 		    console.log(b);
