@@ -55,7 +55,11 @@
 		const a = modelViewer.src;
 		document.querySelector('#model-name').innerText = mName;
 		div.innerHTML = mName + "\n" +a.size;
-
+		
+		urlExists(a).then(result=>{
+			console.log(result);
+		});
+		
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", a, true);
 		xhr.setRequestHeader('Content-Type', 'application/json');
@@ -64,6 +68,7 @@
 		var client = new HttpClient();
 		client.get(a, function(response) {
 			console.log(response);
+			response.statusCode;
 			const c= response.statusCode;
 		    console.log(c);
 		    const b = response.header.get('content-length');
@@ -73,21 +78,25 @@
 		
 
 	  };
+	  
+	   function urlExists(url) {
+        return new Promise((resolve,reject)=>{
+          var request = new Request(url);
+          fetch(request).then(function(response) {
+             resolve(response.status != 404);
+          });
+        });
+		}	
+	  
 	   var HttpClient = function() {
 		this.get = function(aUrl, aCallback) {
         var anHttpRequest = new XMLHttpRequest();
-		anHttpRequest.open( "GET", aUrl, true );  
-		anHttpRequest.setRequestHeader('Content-Type', 'application/json');
         anHttpRequest.onreadystatechange = function() { 
-			console.log(anHttpRequest.status);
-			console.log(anHttpRequest.readyState);
             if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-			{
-				console.log(anHttpRequest.responseText);
-				aCallback(anHttpRequest.responseText);
-			}
-               
+                aCallback(anHttpRequest.responseText);
         }
+
+        anHttpRequest.open( "GET", aUrl, true );            
         anHttpRequest.send( null );
     }
 }
