@@ -82,7 +82,11 @@
 			console.log(anHttpRequest.status);
 			console.log(anHttpRequest.readyState);
             if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                aCallback(anHttpRequest.responseText);
+			{
+				aCallback(anHttpRequest.responseText);
+				console.log(anHttpRequest.responseText);
+			}
+               
         }
         anHttpRequest.send( null );
     }
